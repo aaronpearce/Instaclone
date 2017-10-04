@@ -8,6 +8,12 @@
     <%= f.email_field :email, autofocus: true %>
   </div>
 
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+    <span style="color:red">*</span>
+  </div> 
+
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
@@ -29,6 +35,34 @@
   <div class="field">
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name, "Full Name" %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="form-group">
+        <%= f.label :avatar, class: 'col-sm-2 control-label'  %>
+        <div class="col-sm-6">
+            <%= f.file_field :avatar %>
+        </div>
+    </div>
+
+  <div class="field">
+    <%= f.label :biofield, "User Bio" %><br />
+    <%= f.text_area :biofield,:rows => 10, style: 'width:50%;' %> 
+
+  </div>
+
+  <div class="field">
+    <%= f.label :website, "Website Address" %><br />
+    <%= f.text_field :website %>
+  </div>
+
+  <div class="field">
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
   </div>
 
   <div class="actions">

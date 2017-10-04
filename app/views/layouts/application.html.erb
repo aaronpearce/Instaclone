@@ -1,18 +1,57 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>PromptoSnap</title>
-    <%= csrf_meta_tags %>
+    <title>PromptoSNAP</title>
+      <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+ <body>
+<nav class="navbar justify-content-between" style="background-color: #FFA500;">
+  <a class="navbar-brand" href="#">PromptoSNAP!</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <form class="form-inline">
+        <a class="nav-item" style="color: #A020F0;" href="/">Home</a>
+     
+     <!-- views/devise/menu/_login_items.html.erb -->
+  <% if user_signed_in? %>
+ 
+  <a class="nav-item">
+  <%= link_to('Logout', destroy_user_session_path, {:style=>'color:#000000;', method: :delete, class: 'nav-link'}) %>        
+  </a>
+  <a class="nav-item">
+  <%= link_to('Settings', edit_user_registration_path, {:style=>'color:#000000;', class: 'nav-link'}) %>        
+  </a>
+  
+<% else %>
+  <a class="nav-item">
+  <%= link_to('Login', new_user_session_path, {:style=>'color:#000000;', class: 'nav-link'}) %>  
+  </a>
+  <a class="nav-item">
+  <%= link_to('Sign-up', new_user_registration_path, {:style=>'color:#000000;', class: 'nav-link'}) %>  
+  </a>
+<% end %>
+
+</form>
+  <form class="form-inline">
+    <% if user_signed_in? %>
+
+  <a class="round-image-25"><%= image_tag(current_user.avatar.url(:thumb)) %></a>
+        <a class="nav-item">
+            <%= link_to(current_user.name, user_show_path(current_user.username), {:style=>'color:#000000;', class: 'nav-link'}) %>  
+                  </a>
+    <%  end %>
+  </form>
+</nav>
+<div class="container">    
     <%= yield %>
-    
            <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
-
+  </div>
   </body>
 </html>

@@ -5,21 +5,60 @@
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email, autofocus: true %> 
+    <span style="color:red">*</span>
   </div>
+  
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+    <span style="color:red">*</span>
+  </div> 
 
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.password_field :password, autocomplete: "on", required: 'required' %>
+    <span style="color:red">*</span>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
+  
+
+
+
+  
+ <div class="field">
+    <%= f.label :name, "Full Name" %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="form-group">
+        <%= f.label :avatar, class: 'col-sm-2 control-label'  %>
+        <div class="col-sm-6">
+            <%= f.file_field :avatar %>
+        </div>
+    </div>
+
+  <div class="field">
+    <%= f.label :biofield, "User Bio" %><br />
+    <%= f.text_field :biofield %>
+  </div>
+
+  <div class="field">
+    <%= f.label :website, "Website Address" %><br />
+    <%= f.text_field :website %>
+  </div>
+
+  <div class="field">
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
+  </div> 
 
   <div class="actions">
     <%= f.submit "Sign up" %>

@@ -31,8 +31,9 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 # Use Devise for Logins
 gem 'devise'
-
-
+gem 'bootstrap'
+gem 'paperclip'
+gem 'simple_form'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
