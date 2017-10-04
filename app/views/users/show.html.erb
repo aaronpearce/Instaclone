@@ -1,12 +1,12 @@
-<br><h2><%= @user.username %></h2> <br>
+<h2><br><%= current_user.username %><br></h2>
 <%= image_tag(current_user.avatar.url(:medium)) %><br><br>
 
 
 
 
-<%= @user.biofield %><br><br>
-Website: <%= @user.website %><br><br>
-Location: <%= @user.location %><br><br>
+<%= current_user.biofield %><br><br>
+Website: <%= current_user.website %><br><br>
+Location: <%= current_user.location %><br><br>
 
 
 
@@ -16,5 +16,5 @@ Location: <%= @user.location %><br><br>
 
 
 
-<%= @user.name %>, contact at: 
-<%= @user.email %>
+<%= current_user.name %>, contact at: 
+<%= current_user.email %>

@@ -1,0 +1,28 @@
+<div class="posts-wrapper, row">
+	<div class="post">
+		 <div class="post-head">
+			<div class="name"><center><b>
+				 <%= link_to(current_user.username, user_show_path(current_user.username), {:style=>'color:#000000;', class: 'nav-link'}) unless @post.user_id.blank? %> </b>
+			</div>
+		</div> 
+			
+		<div class="image.centre-block"><center>
+			<%= link_to (image_tag @post.image.url(:large), {class: 'img-responsive'}), post_path(@post) %>
+		</div>
+
+		<div class="caption"><center>
+			<%= @post.caption %>
+		</div>
+	<% if @post.user.id == current_user.id %>
+		<div style="width:800px; margin:0 auto;"><center>
+  			<%= link_to("Edit Post", edit_post_path(@post)) %>
+  			 | 
+  			<%= link_to "Cancel", posts_path %>
+  		</div>
+  	<% else %>
+  		<div style="width:800px; margin:0 auto;"><center>
+  			<%= link_to "Cancel", posts_path %>	
+  	<% end %>
+  		</div>
+	</div>
+</div>
