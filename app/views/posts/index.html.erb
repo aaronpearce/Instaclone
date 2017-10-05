@@ -1,26 +1,6 @@
-<h1>PromptoSNAP index</h1>
-
-
-<div class="posts-wrapper, row">
 <% for post in @posts %>
-	<div class="post">
-		<div class="post-head">
-			<div class="name">
-				<center><b> <%= link_to(current_user.username, user_show_path(current_user.username), {class: 'nav-link'}) %></b>
-			</div>
-		</div>
-			
-		<div class="image.centre-block">
-			<%= link_to (image_tag post.image(:large), {class: 'img-responsive'}), post_path(post) %>
-		</div>
-
-		<div class="caption">
-			<%= post.caption %>
-		</div>
-
-	</div>
+	<%= render "post", post: post %>
 <% end %>
-</div>
 
 
 

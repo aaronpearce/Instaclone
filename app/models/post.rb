@@ -8,4 +8,6 @@ class Post < ApplicationRecord
 
   post = Post.first
 
+  has_many :comments, dependent: :destroy
+
 end
