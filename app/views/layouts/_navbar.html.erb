@@ -35,7 +35,7 @@
 
   <a class="round-image-25"><%= image_tag(current_user.avatar.url(:thumb)) %></a>
         <a class="nav-item">
-            <%= link_to(current_user.name, user_show_path(current_user.username), {class: 'nav-link'}) %>  
+            <%= link_to(current_user.username, user_show_path(current_user.username), {class: 'nav-link'}) %>  
                   </a>
     <%  end %>
   </form>

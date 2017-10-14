@@ -1,47 +1,49 @@
-<div class="posts-wrapper row">
+<div class="posts-wrapper">
 	<div class="post">
 		 <div class="post-head">
-			<div class="name"><center><b>
-
-				
-				<%= link_to(post.user.username, user_show_path(post.user.username), {:style=>'color:#000000;', class: 'nav-link'}) %> </b> 
+			<div class="thumb-img">
 			</div>
-		</div> 
+
+      		<div class="user-name">
+        		<%= link_to post.user.username, user_show_path(post.user.username) %>
+      		</div>
+    	</div>
+				
 			
-		<div class="image.centre-block"><center>
+		<div class="image.centre-block">
 			<%= link_to (image_tag post.image.url(:large), {class: 'img-responsive'}), post_path(post) %>
 		</div>
-
 		
-			<%= post.caption %>
-
-			<%= time_ago_in_words post.created_at %> ago
-			
-			<div>
-				<%= link_to image_tag("like_logo.jpg", border: 0), like_post_path(post.id), remote: true, id: "like #{post.id}" %>
+		<div class="post-bottom">
+			<div class="caption">
+				<div class="caption-content">
+				<%= post.caption %>
+				</div>
+			</div>
+				
+			<div class="time-ago">
+				<%= time_ago_in_words post.created_at %> ago
+			</div>
+			<div class="likes">
 				<%= render 'likes', post: post %>
 			</div>
-
-		<div class>
-		<% if post.comments %>
-			<% post.comments.each do |comment| %>
-				<div>
-					<%= comment.user.username %>:
-					<%= comment.content %>
-					<% if comment.user == current_user %>
-						<%= link_to "[Delete Comment]", post_comment_path(post, comment), method: :delete, data: { confirm: "Are you sure?" } %>
-					
-					<% end %>
-				</div>
-			<% end %>	
-		<% end %>		
+			<div class="comments" id="comments_<%= post.id %>">
+				<% if post.comments %>
+					<%= render post.comments, post: post %>
+				<% end %>
+			</div>
 		</div>
 
-		<div class="comment-form">
-				<%= form_for [post, post.comments.new] do |f| %>
-      			<%= f.text_field :content, placeholder: "Add a comment..." %>
-      			<% end %>
-      	</div>
+		<div class="comment-like-form row">
+  			<div class="like-button col-sm-1">
+   				<span class="glyphicon glyphicon-heart-empty like"></span>
+   			</div>
 
+			<div class="comment-form col-sm-11">
+				<%= form_for([post, post.comments.new], remote: true) do |f| %>
+      			<%= f.text_field :content, placeholder: "Add a comment...", class: "comment_content", id: "comment_content_#{post.id}" %>
+      			<% end %>
+      		</div>
+		</div>
 	</div>
 </div>		

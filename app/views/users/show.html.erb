@@ -19,10 +19,13 @@
 
 		<div class>
 
-		Website: <%= @user.website %><br><br>
+		Website: <%= @user.website %><br>
 		Location: <%= @user.location %><br><br>
 	
 		</div>
+		<% if @user.id == current_user.id %>
+		<%= link_to('Edit Profile', edit_user_registration_path) %>
+		<% end %>
 
 	
 

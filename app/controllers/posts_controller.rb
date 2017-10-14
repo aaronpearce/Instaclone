@@ -17,6 +17,11 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
 
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js
+    end
+
     if @post.save
       flash[:success] = "Your post has been created!"
       redirect_to posts_path
@@ -42,6 +47,8 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     redirect_to root_path
+      format.html
+      format.js
   end
 
   def like

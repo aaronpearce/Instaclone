@@ -6,18 +6,17 @@ before_action :set_post
   		@comment = @post.comments.build(comment_params)
   		@comment.user_id = current_user.id
 
+      
+
   		if @comment.save
-    		flash[:success] = "You commented the hell out of that post!"
     		redirect_to post_path(@post)
   		else
-    		flash[:alert] = "Check the comment form, something went horribly wrong."
     		render root_path
   		end
 	end
 
 	def destroy
   		@comment = @post.comments.find(params[:id])
-
   		@comment.destroy
   		flash[:success] = "Comment deleted :("
   		redirect_to (@post)
